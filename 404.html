@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lance Romanoff</title>
+
+    <style>
+        :root {
+            --content-size: 80vw;
+        }
+
+         @font-face {
+            font-family: 'porcelain';
+            src: url(font/PORCELAIN.TTF);
+        }
+        
+        @font-face {
+            font-family: 'twcenmt';
+            src: url(font/TwCenMT.ttf);
+        }
+
+         @font-face {
+            font-family: 'twcenmt-bold';
+            src: url(font/TwCenMTStdBold.otf);
+        }
+
+        @keyframes colorchange {
+        0% {
+            background: hsl(133, 28%, 51%);
+        }
+        25% {
+            background: hsl(38, 20%, 56%);
+        }
+        50% {
+            background: hsl(76, 25%, 52%);
+        }
+        75% {
+            background: hsl(178, 37%, 57%);
+        }
+        100% {
+            background: hsl(133, 28%, 51%);
+        }
+        }
+
+        @keyframes headercolor {
+        0% {
+            color: hsl(133, 28%, 51%);
+        }
+        25% {
+            color: hsl(38, 20%, 56%);
+        }
+        50% {
+            color: hsl(76, 25%, 52%);
+        }
+        75% {
+            color: hsl(178, 37%, 57%);
+        }
+        100% {
+            color: hsl(133, 28%, 51%);
+        }
+        }
+
+        html {
+            font-size: calc(10rem / 16);
+        }
+
+        body {
+            animation: colorchange 30s normal infinite;
+            aspect-ratio: 13 / 8;
+            color: 	hsl(0, 0%, 7%);
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            padding: 0;
+            text-wrap: pretty;
+        }
+
+        .all {
+            align-items: flex-end;
+            container-type: inline-size;
+            container-name: all;
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+            height: calc(100dvh - 6vw);
+            padding: 3vw; 
+        }
+
+        header {
+            font-family: twcenmt, sans-serif;
+            font-size: clamp(25px, 3.75vw, 60px);
+            margin: 0;
+        }
+
+        header section {
+            position: absolute;
+            top: 10vw;
+            right: 10vw;
+            z-index: 25;
+        }
+
+        header section h1 {
+            color: hsl(0, 0%, 100%);
+            font-family: porcelain, serif;
+            font-size: clamp(50px, 6.25vw, 120px);
+            font-weight: normal;
+            line-height: 0.5;
+            margin: 0;
+            opacity: 0.5;
+            padding: 0;
+            text-transform: lowercase;
+        }
+
+        header section h1 a,  header section h1 a:active,  header section h1 a:visited {
+            color: hsl(0, 0%, 100%);
+            text-decoration: none;
+            transition: all 0.333s ease-in-out;
+        }
+
+        header section h1 a:active,  header section h1 a:hover {
+            color: hsl(0, 0%, 0%);
+            transition: all 0.333s ease-in-out;
+        }
+
+        header section h2 {
+            color: hsl(0, 0%, 0%);
+            font-size: clamp(15px, 1.5vw, 30px);
+            line-height: 2;
+            margin: 0;
+            opacity: 0.5;
+            padding: 0;
+            text-transform: uppercase;
+        }
+
+        nav {
+            position: relative;
+            z-index: 100;
+        }
+
+        .fade-out, .content.fade-out {
+            aspect-ratio: 1/1;
+            width: var(--content-size);
+
+            opacity: 0;
+            left: 6vw;
+            top: 6vw;
+            z-index: 1;
+            transition: all 0.333s ease-out;
+        }
+
+        .images.fade-out {
+            width: 150vw;
+            opacity: 0.1;
+            transition: all 0.333s ease-out;
+            z-index: -10;
+        }
+
+        .fade-in, .content.fade-in {
+            aspect-ratio: 1/1;
+            width: var(--content-size);
+
+            opacity: 1;
+            left: 2vw;
+            top: 2vw;
+            z-index: 2;
+            transition: all 0.333s ease-in;
+        }
+
+        .content {
+            aspect-ratio: 1/1;
+            width: var(--content-size);
+            max-width: 2000px;
+            
+            background: url(img/blank.png);
+            background-size: cover;
+            opacity: 0;
+            position: absolute;
+            left: 2vw;
+            top: 2vw;
+            z-index: -1;
+        }
+
+        h3 {
+            animation: headercolor 30s normal infinite;
+            font-family: twcenmt, sans-serif;
+            font-size: clamp(40px, 5.5vw, 90px);
+            font-weight: normal;
+            letter-spacing: -0.1vw;
+            line-height: 1;
+            margin: 0;
+            padding: 3vw 0 0 0;
+            text-align: center;
+            text-transform: uppercase;
+            text-wrap: nowrap;
+        }
+
+        h4 {
+            font-family: twcenmt, Helvetica, Arial, sans-serif;
+            font-size: clamp(20px, 2vw, 30px);
+            font-weight: normal;
+            line-height: 1;
+            margin: 0;
+            opacity: 0.75;
+            padding: 0;
+            text-align: center;
+            text-transform: uppercase;
+            text-wrap: nowrap;
+        }
+
+        ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            display: block;
+            margin: 0 2vw 1vw 0;
+            padding: 0;
+            text-align: right;
+        }
+    
+        .text {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            display: grid;
+            align-content: center;
+            font-size: clamp(13px, 2vw, 40px);
+            hyphens: auto;
+            letter-spacing: -0.5px;
+            line-height: 1.5; 
+            overflow: hidden;
+            padding: 4vw 0 0 5vw;
+            text-align: left;
+            width: calc(var(--content-size) - 9vw); 
+            max-width: calc(2000px - 9vw);
+        }
+
+        .text p {
+            margin: 1.5vw 0;
+            text-wrap: pretty;
+        }
+
+        .text p a img, .text p a svg {
+            height: 3vw;
+            width: 3vw;
+            vertical-align: middle;
+        }
+
+        .text p a svg {
+            color:  hsl(133, 28%, 51%);
+        }
+
+        .text div.all_text {
+            padding: 0 17%;
+        }
+
+        .text ul {
+            margin: 1.5vw 0;
+        }
+
+        .text ul li {
+            display: inline;
+            font-style: italic;
+            margin: 0;
+            padding: 0;
+        }
+
+         .text ul li:after {
+            content: ",";
+        }
+
+        .text ul li:last-of-type:after {
+            content: "";
+        }
+
+        .text img.circle {
+            bottom: clamp(-19vw, -15vw, -11vw);
+            position: absolute;
+            width: 25vw;
+        }
+        
+        nav a,
+        nav a:visited {
+            color: hsl(0, 0%, 7%);
+            display: block;
+            letter-spacing: clamp(-3px, -0.15625vw, 0px);
+            opacity: 0.667;
+            text-decoration: none;
+            text-transform: uppercase;
+            transform: scale(1);
+            transition: all 0.333s ease-in-out;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            transform: scale(1.5);
+            margin-right: 2vw;
+        }
+
+        nav:hover a:not(:hover) {
+            opacity: 0.25;
+        }
+
+        .next_prev {
+            text-align: center;
+        }
+
+        .next_prev a {
+            color: #333;
+            font-family: twcenmt, sans-serif;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            transition: all 0.333s ease-in-out;
+        }
+
+        .next_prev a:hover {
+            color: #000;
+        }
+
+        .images {
+            left: 1vw;
+            position: absolute;
+            top: 7vw;
+            width: clamp(285px, 70vw, 2000px);
+        } 
+
+        .images img.vespa {
+            margin: -1% 0 0 20%;
+            position: absolute;
+            width: 57%;
+        }
+
+        .em-address:before {
+            content: attr(data-website) "\0040" attr(data-user);
+            direction: rtl;
+            unicode-bidi: bidi-override; 
+        }
+
+        #contact .text {
+            text-align: center;
+        }
+
+        #imageContainer {
+            position: relative;
+        }
+
+        #imageContainer img {
+            margin: 24% 0 0 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            width: 26%;
+        }
+
+        #imageContainer img.active {
+            opacity: 0.9;
+        }
+
+       #spanContainer {
+            position: relative;
+        }
+
+        #spanContainer span {
+            display: block;
+            margin: 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            width: 100%;
+        }
+
+        #spanContainer span.active {
+            opacity: 0.9;
+        }
+
+        #spanContainer span img:nth-child(1) {
+            margin: 46% 0 0 0;
+            width: 17%;
+            position: absolute;
+        }
+
+        #spanContainer span img:nth-child(2) {
+            margin: 45% 0 0 15%;
+            width: 26%;
+            position: absolute;
+        }
+
+        #spanContainer span img:nth-child(3) {
+            margin: 39% 0 0 63%;
+            width: 20%;
+            position: absolute;
+        }
+
+        #spanContainer span img:nth-child(4) {
+            margin: 38% 0 0 82%;
+            width: 27%;
+            position: absolute;
+        }
+
+        #work .text .job  {
+            padding: 0;
+        }
+
+        #work .text .job p:nth-of-type(2) {
+            font-style: italic; 
+        }
+
+        #work .text .job p:nth-of-type(3) {
+            text-align: center;
+        }
+
+        #work .text .job p:nth-of-type(3) img {
+            width: 50%;
+        }
+
+        @container all (min-width: 640px) {
+            header section {
+                top: 5vw;
+                right: 5vw;
+            }
+        }
+
+        @media screen and (orientation:portrait) and (min-width: 640px) {
+            .images {
+                top: 7vw;
+            } 
+            
+            .fade-in, .content.fade-in {
+                top: 10vw;
+            }
+        }
+
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="all">
+
+                    <header>
+                        <section>
+                            <h1><a href="index.html#home" class="menu" data-target="images">Lance Romanoff</a></h1>
+                            <h2>UX Writer &amp; Designer &amp; Developer</h2>
+                        </section>
+
+            </header>
+
+            <section class="content" style="display: block; opacity: 1;">
+                <div class="text" lang="en">
+                    <h3>404!</h3>
+                    <p style="text-align: center;">
+                        Sorry.  What you're after isn't here.
+                    </p>
+                </div>
+            </section>
+                         
+        </div>
+    </body>
+</html>

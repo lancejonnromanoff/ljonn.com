@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lance Romanoff</title>
+
+    <style>
+        :root {
+            --content-size: 75vw;
+            --content-size-mobile: 90vw;
+        }
+
+         @font-face {
+            font-family: 'porcelain';
+            src: url(font/PORCELAIN.TTF);
+        }
+        
+        @font-face {
+            font-family: 'twcenmt';
+            src: url(font/TwCenMT.ttf);
+        }
+
+         @font-face {
+            font-family: 'twcenmt-bold';
+            src: url(font/TwCenMTStdBold.otf);
+        }
+
+        @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+        25% {
+            background-position: 25% 50%;
+        }
+        50% {
+            background-position: 50% 50%;
+        }
+        75% {
+            background-position: 75% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+        }
+
+        @keyframes headercolor {
+        0% {
+            color: hsl(133, 28%, 51%);
+        }
+        25% {
+            color: hsl(38, 20%, 56%);
+        }
+        50% {
+            color: hsl(76, 25%, 52%);
+        }
+        75% {
+            color: hsl(178, 37%, 57%);
+        }
+        100% {
+            color: hsl(133, 28%, 51%);
+        }
+        }
+
+        html {
+            font-size: calc(10rem / 16);
+        }
+
+        body {
+            background: linear-gradient(
+                to right,
+                hsl(133, 28%, 51%),
+
+                hsl(38, 20%, 56%),
+
+                hsl(76, 25%, 52%),
+
+                hsl(178, 37%, 57%)
+            );
+            background-size: 300% 300%;
+            animation: gradientMove 15s infinite alternate ease-in-out;
+            aspect-ratio: 13 / 8;
+            color: 	hsl(0, 0%, 7%);
+            font-family: twcenmt, Helvetica, Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            padding: 0;
+            text-wrap: pretty;
+        }
+
+        .all {
+            align-items: flex-end;
+            container-type: inline-size;
+            container-name: all;
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+            height: calc(100dvh - 6vw);
+            padding: 3vw; 
+        }
+
+        header {
+            font-size: clamp(18px, 2.75vw, 44px);
+            margin: 0;
+        }
+
+        header section {
+            position: absolute;
+            top: 7vw;
+            right: 7vw;
+            z-index: 25;
+        }
+
+        header section h1 {
+            color: hsl(0, 0%, 100%);
+            font-family: porcelain, serif;
+            font-size: clamp(50px, 6.25vw, 120px);
+            font-weight: normal;
+            line-height: 0.5;
+            margin: 0;
+            opacity: 0.5;
+            padding: 0;
+            text-transform: lowercase;
+        }
+
+        header section h1 a,  header section h1 a:active,  header section h1 a:visited {
+            color: hsl(0, 0%, 100%);
+            text-decoration: none;
+            transition: all 0.333s ease-in-out;
+        }
+
+        header section h1 a:active,  header section h1 a:hover {
+            color: hsl(0, 0%, 0%);
+            transition: all 0.333s ease-in-out;
+        }
+
+        header section h2 {
+            color: hsl(0, 0%, 0%);
+            font-size: clamp(15px, 1.5vw, 30px);
+            line-height: 1;
+            margin: 0;
+            opacity: 0.5;
+            padding: 0;
+            text-transform: uppercase;
+        }
+
+        nav {
+            position: relative;
+            z-index: 100;
+        }
+
+        .fade-out, .content.fade-out {
+            aspect-ratio: 1/1;
+            width: var(--content-size);
+
+            opacity: 0;
+            left: 6vw;
+            top: 6vw;
+            z-index: 1;
+            transition: all 0.333s ease-out;
+        }
+
+        .images.fade-out {
+            width: 150vw;
+            opacity: 0.1;
+            transition: all 0.333s ease-out;
+            z-index: -10;
+        }
+
+        .fade-in, .content.fade-in {
+            aspect-ratio: 1/1;
+            width: var(--content-size-mobile);
+            opacity: 1;
+            left: 2vw;
+            top: 30vw;
+            z-index: 2;
+            transition: all 0.333s ease-in;
+        }
+
+        .content {
+            aspect-ratio: 1/1;
+            width: var(--content-size);
+            max-width: 2000px;
+            
+            background: url(img/blank.png);
+            background-size: cover;
+            opacity: 0;
+            position: absolute;
+            left: 2vw;
+            top: 2vw;
+            z-index: -1;
+        }
+
+        h3 {
+            animation: headercolor 30s normal infinite;
+            font-size: clamp(40px, 5.5vw, 90px);
+            font-weight: normal;
+            letter-spacing: -0.1vw;
+            line-height: 1;
+            margin: 0;
+            padding: 3vw 0 0 0;
+            text-align: center;
+            text-transform: uppercase;
+            text-wrap: nowrap;
+        }
+
+        #work h3, #work2 h3, #work3 h3, #work4 h3, #work5 h3, #work6 h3 {
+            font-size: clamp(20px, 3.5vw, 50px); 
+        }
+
+        h4 {
+            font-size: clamp(20px, 2vw, 30px);
+            font-weight: normal;
+            line-height: 1;
+            margin: 0;
+            opacity: 0.75;
+            padding: 0;
+            text-align: center;
+            text-transform: uppercase;
+            text-wrap: nowrap;
+        }
+
+        ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            display: block;
+            margin: 0 2vw 1vw 0;
+            padding: 0;
+            text-align: right;
+        }
+    
+        .text {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            display: grid;
+            align-content: center;
+            font-size: clamp(13px, 1.75vw, 40px);
+            hyphens: auto;
+            letter-spacing: 0;
+            line-height: 1.3333; 
+            overflow: hidden;
+            padding: 4vw 0 0 5vw;
+            text-align: justify;
+            width: calc(var(--content-size-mobile) - 9vw); 
+            max-width: calc(2000px - 9vw);
+        }
+
+        .text a {
+            display: inline-block;
+            text-align: left;
+        }
+
+        .text p {
+            margin: 1.5vw 0;
+            text-wrap: pretty;
+        }
+
+        .text p a img, .text p a svg {
+            height: 3vw;
+            width: 3vw;
+            vertical-align: middle;
+        }
+
+        .text p a svg {
+            color:  hsl(133, 28%, 51%);
+        }
+
+        .text div.all_text {
+            padding: 0 17%;
+        }
+
+        .text ul {
+            margin: 1.5vw 0;
+        }
+
+        .text ul li {
+            display: inline;
+            font-style: italic;
+            margin: 0;
+            padding: 0;
+        }
+
+         .text ul li:after {
+            content: ",";
+        }
+
+        .text ul li:last-of-type:after {
+            content: "";
+        }
+
+        .text img.circle {
+            bottom: clamp(-19vw, -15vw, -11vw);
+            position: absolute;
+            width: 25vw;
+        }
+        
+        nav a,
+        nav a:visited {
+            color: hsl(0, 0%, 7%);
+            display: block;
+            letter-spacing: clamp(-3px, -0.15625vw, 0px);
+            opacity: 0.667;
+            text-decoration: none;
+            text-transform: uppercase;
+            transform: scale(1);
+            transition: all 0.333s ease-in-out;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            transform: scale(1.5);
+            margin-right: 2vw;
+        }
+
+        nav:hover a:not(:hover) {
+            opacity: 0.25;
+        }
+
+        .next_prev {
+            text-align: center;
+        }
+
+        .all_text a {
+            color: #333;
+            text-transform: uppercase;
+            transition: all 0.333s ease-in-out;
+        }
+
+        .all_text a:hover {
+            color: #000;
+        }
+
+        .next_prev a {
+            color: #333;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            transition: all 0.333s ease-in-out;
+        }
+
+        .next_prev a:hover {
+            color: #000;
+        }
+
+        p.tech {
+            font-size: 0.8em;
+            font-style: italic;
+        }
+
+        .portfolio_links {
+            display: grid;
+            font-size: 0.9em;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            grid-column-gap: 1em;
+            grid-row-gap: 0.5em;
+        }
+
+        .portfolio_links p {
+            margin: 1.5vw 0 0 0;
+        }
+
+        .images {
+            left: 1vw;
+            position: absolute;
+            top: 20vh;
+            width: clamp(285px, 70vw, 2000px);
+        } 
+
+        .images img.vespa {
+            margin: -1% 0 0 20%;
+            position: absolute;
+            width: 57%;
+        }
+
+        .fiction .all_text p:first-of-type {
+            background-color: #fdfdfd;
+            box-shadow: 1px 3px 5px #ddd;
+            font-size: 0.7em;
+            font-style: italic;
+            padding: 1em;
+        }
+        .fiction .all_text li {
+            display: block;
+
+
+        }
+
+        .em-address:before {
+            content: attr(data-website) "\0040" attr(data-user);
+            direction: rtl;
+            unicode-bidi: bidi-override; 
+        }
+
+        #contact .text {
+            text-align: center;
+        }
+
+        #imageContainer {
+            position: relative;
+        }
+
+        #imageContainer img {
+            margin: 24% 0 0 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            width: 26%;
+        }
+
+        #imageContainer img.active {
+            opacity: 0.9;
+        }
+
+       #spanContainer {
+            position: relative;
+        }
+
+        #spanContainer span {
+            display: block;
+            margin: 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            width: 100%;
+        }
+
+        #spanContainer span.active {
+            opacity: 0.9;
+        }
+
+        #spanContainer span img:nth-child(1) {
+            margin: 46% 0 0 0;
+            width: 17%;
+            position: absolute;
+        }
+
+        #spanContainer span img:nth-child(2) {
+            margin: 45% 0 0 15%;
+            width: 26%;
+            position: absolute;
+        }
+
+        #spanContainer span img:nth-child(3) {
+            margin: 39% 0 0 63%;
+            width: 20%;
+            position: absolute;
+        }
+
+        #spanContainer span img:nth-child(4) {
+            margin: 38% 0 0 82%;
+            width: 27%;
+            position: absolute;
+        }
+
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 0.125rem solid #000; 
+            outline-offset: 0.25rem;
+}
+
+        @container all (min-width: 440px) {            
+            .fade-in, .content.fade-in {
+                top: 20vw;
+            }
+        }
+
+        @container all (min-width: 560px) {            
+            .fade-in, .content.fade-in {
+                top: 10vw;
+                width: var(--content-size);
+            }
+
+            .text {
+                width: calc(var(--content-size) - 9vw); 
+            }
+        }
+
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="all">
+
+                    <header>
+                        <section>
+                            <h1><a href="#home" class="menu" data-target="images" role="button">Lance Romanoff</a></h1>
+                            <h2>UX Writer &amp; Designer &amp; Developer<br>
+                            &amp; Fiction Writer</h2>
+                        </section>
+                    <nav>
+                        <ul>
+                            <li><a href="#writing" class="menu" data-target="writing">ux writing</a></li>
+                            <li><a href="#work" class="menu" data-target="work">ux design/dev</a></li>
+                            <li><a href="#fiction" class="menu" data-target="fiction">fiction</a></li>
+                            <li><a href="#bio" class="menu"  data-target="bio">bio</a></li>
+                            <li><a href="#contact" class="menu" data-target="contact">contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="images" id="images">
+
+                        <div id="imageContainer">
+                            <img src="img/apsoy.png" alt="Photo of the Apollo-Soyuz mission" loading="lazy" class="active">
+                            <img src="img/astronaut.png" alt="Photo of an Astronaut" loading="lazy">
+                            <img src="img/cat2.png" alt="Photo of an often annoying Sphynx cat" loading="lazy">
+                            <img src="img/books.png" alt="Photo of World War Two USO poster reading 'Our Men Need Books'" loading="lazy">
+                            <img src="img/bruins.png" alt="Photo of the Boston Bruins" loading="lazy">
+                            <img src="img/cat.png" alt="Photo of a sometimes annoying Sphynx cat" loading="lazy">
+                        </div>
+
+                        <img src="img/vespa.png" alt="Photo of Lance Romanoff" loading="lazy" class="vespa">
+
+                        <div id="spanContainer">
+
+                        <span class="active">
+                            <img src="img/city.png" alt="Photo of Los Angeles at night" loading="lazy">
+                            <img src="img/elvis.png" alt="Photo of Elvis Costello" loading="lazy">
+                            <img src="img/guitar.png" alt="Photo of a Guitar" loading="lazy">
+                            <img src="img/headphones.png" alt="Photo of headphones" loading="lazy">
+                        </span>
+                        
+                        <span>
+                            <img src="img/jam.png" alt="Photo of The Jam" loading="lazy">
+                            <img src="img/john.png" alt="Photo of John Lennon" loading="lazy">
+                            <img src="img/landk.png" alt="Photo of Lance Romanoff and his brother" loading="lazy">
+                            <img src="img/medal.png" alt="Photo of a Soviet Medal" loading="lazy">
+                        </span>
+
+                        <span>
+                            <img src="img/mf.png" alt="Photo of Lance Romanoff with Millennium Falcon" loading="lazy">
+                            <img src="img/nlrx.png" alt="Photo of New London (NH) Pharmacy" loading="lazy">
+                            <img src="img/paul.png" alt="Photo of Paul McCartney" loading="lazy">
+                            <img src="img/snake.png" alt="Photo of a pet snake" loading="lazy">
+                        </span>
+
+                        <span>
+                            <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy">
+                            <img src="img/sot.png" alt="Photo of Sea of Tranquility short story by Lance Romanoff" loading="lazy">
+                            <img src="img/trane.png" alt="Photo of John Coltrane" loading="lazy">
+                            <img src="img/yellowsub.png" alt="Photo of The Beatles' Yellow Submarine" loading="lazy">
+                        </span> 
+
+                        </div>
+
+                    </div>
+            </header>
+
+            <main>
+
+            <section class="content" id="writing">
+                <div class="text" lang="en">
+                    <h3>UX Writing</h3>
+                    <div class="all_text">
+              
+                                    
+                                            <p>
+                                            I work with cross-functional teams to develop user-friendly digital products, offering expertise on user experience, accessibility, and user-centered design.
+                                        </p>
+
+                                        <p>
+                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/" title="LinkedIn Resume"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+                
+                                            <a href="files/romanoff-resume-uxr.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+                
+                                            <a href="files/romanoff-resume-uxr.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                   
+                                        
+
+                                        <p class="next_prev">
+                                            <a href="#writing2" class="menu" data-target="writing2">next</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="writing2">
+                <div class="text" lang="en">
+                    <h3>UX Writing</h3>
+                    <div class="all_text">
+              
+                                        <h4>WebGizzmo</h4>
+                                            <p>
+                                                For WebGizzmo, I provided content design, UX design, and site development - focusing on the agency's mission as a high-level technical resource for larger web development firms.
+                                        </p>
+
+                                        <p>
+                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/" title="LinkedIn Resume"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+                
+                                            <a href="files/romanoff-resume-uxr.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+                
+                                            <a href="files/romanoff-resume-uxr.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                   
+                                        
+
+                                    <p class="next_prev">
+                                        <a href="#writing" class="menu" data-target="writing">previous</a>&nbsp;|&nbsp;<a href="#writing3" class="menu" data-target="writing3">next</a>
+                                    </p>
+                        
+                                </div>
+
+                                <p>
+                                    <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy" class="circle">
+                                </p>
+                            </div>
+                        </section>
+
+                    <section class="content" id="writing3">
+                        <div class="text" lang="en">
+                            <h3>UX Writing</h3>
+                            <div class="all_text">
+                      
+                                                <h4>First American Financial</h4>
+                                                    <p>
+                                                        I led the design system for First American's primary web application, focusing on aligning visual and written content to enhance user engagement. I also collaborated with teams to develop and refine UX writing standards and acted as a consultant on accessibility and usability best practices, influencing both design and content decisions. Additionally, I worked on code development with a focus on the user interface but balanced this with maintaining content standards.
+                                                </p>
+        
+                                                <p>
+                                    
+                                                    <a href="https://www.linkedin.com/in/lanceromanoff/" title="LinkedIn Resume"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                        <path
+                                                            d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                        </path>
+                                                    </svg></a>
+                        
+                                                    <a href="files/romanoff-resume-uxr.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                            alt="Resume PDF Download"></a>
+                        
+                                                    <a href="files/romanoff-resume-uxr.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                            alt="Resume Microsoft Word Download"></a>
+                                            </p>
+                                           
+                                                
+        
+                                            <p class="next_prev">
+                                                <a href="#writing2" class="menu" data-target="writing2">previous</a>&nbsp;|&nbsp;<a href="#writing4" class="menu" data-target="writing4">next</a>
+                                            </p>
+                                
+                            </div>
+
+                    <p>
+                        <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="writing4">
+                <div class="text" lang="en">
+                    <h3>UX Writing</h3>
+                    <div class="all_text">
+              
+                                        <h4>CVS Health</h4>
+                                            <p>
+                                                I consulted on user-centered experience design for multiple CVS web products, including CVS.com and Omnicare.com. I also worked closely with design teams to create wireframes and prototypes, focusing on the integration of content and design to enhance user experiences.
+                                        </p>
+
+                                        <p>
+                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+                
+                                            <a href="files/romanoff-resume-uxr.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+                
+                                            <a href="files/romanoff-resume-uxr.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                   
+                                        
+
+                                    <p class="next_prev">
+                                        <a href="#writing3" class="menu" data-target="writing3">previous</a>&nbsp;|&nbsp;<a href="#writing5" class="menu" data-target="writing5">next</a>
+                                    </p>
+                        
+                    </div>
+
+            <p>
+                <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy" class="circle">
+            </p>
+        </div>
+    </section>
+
+<section class="content" id="writing5">
+    <div class="text" lang="en">
+        <h3>UX Writing</h3>
+        <div class="all_text">
+  
+                            <h4>Houghton Millfin Harcourt</h4>
+                                <p>
+                                    I developed user-facing content for Houghton Mifflin's e-commerce platform, ensuring that the tone and clarity aligned with brand standards. I consulted on accessibility and user experience, focusing on making content easily understandable for all users, and provided development of functional prototypes and production code.
+                            </p>
+
+                            <p>
+                
+                                <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                    <path
+                                        d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                    </path>
+                                </svg></a>
+    
+                                <a href="files/romanoff-resume-uxr.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                        alt="Resume PDF Download"></a>
+    
+                                <a href="files/romanoff-resume-uxr.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                        alt="Resume Microsoft Word Download"></a>
+                        </p>
+                       
+                            
+
+                        <p class="next_prev">
+                            <a href="#writing4" class="menu" data-target="writing4">previous</a>&nbsp;|&nbsp;<a href="#writing6" class="menu" data-target="writing6">next</a>
+                        </p>
+            
+        </div>
+
+<p>
+    <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy" class="circle">
+</p>
+</div>
+</section>
+
+<section class="content" id="writing6">
+    <div class="text" lang="en">
+        <h3>UX Writing</h3>
+        <div class="all_text">
+  
+                            <h4>Jack Morton Worldwide</h4>
+                                <p>
+                                    I provided front-end development and UX design consulting for clients such as Liberty Mutual, Fidelity Investments, Eaton Power, and Subway Restaurants, ensuring seamless, user-focused digital experiences. I collaborated with cross-functional teams to ensure user-centered design principles were implemented throughout the project lifecycle, balancing content clarity with design goals.
+                            </p>
+
+                            <p>
+                
+                                <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                    <path
+                                        d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                    </path>
+                                </svg></a>
+    
+                                <a href="files/romanoff-resume-uxr.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                        alt="Resume PDF Download"></a>
+    
+                                <a href="files/romanoff-resume-uxr.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                        alt="Resume Microsoft Word Download"></a>
+                        </p>
+                       
+                            
+
+                        <p class="next_prev">
+                            <a href="#writing5" class="menu" data-target="writing5">previous</a>
+                        </p>
+            
+        </div>
+
+<p>
+    <img src="img/sony.png" alt="Photo of a Sony Studios ID badge" loading="lazy" class="circle">
+</p>
+</div>
+</section>
+
+            <section class="content" id="work">
+                <div class="text" lang="en">
+                    <h3>UX Development &amp; Design</h3>
+                    <div class="all_text">
+              
+                                        <h4>First American</h4>
+                                        <p>
+                                            At First American, I managed the design system for First American's primary web application called Ignite. This involved regular consultation with designers and developers across the enterprise, code development in SASS and Angular 15, and consulting on accessibility and usability best practices.
+                                        </p>
+                                        <p class="tech">
+                                            <strong>Tech on this job:</strong><br>
+                                            HTML5, CSS3, SASS, JavaScript, Angular 8-15, TypeScript, JSON, REST APIs, git, Section 508/WAI compliance, Photoshop, Figma, Storybook
+                                        </p>
+
+                                        <p> 
+                                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+    
+                                            <a href="files/romanoff-resume.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+    
+                                            <a href="files/romanoff-resume.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                    
+                                        <p class="next_prev">
+                                            <a href="#work2" class="menu" data-target="work2">next</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/city.png" alt="Photo of Los Angeles" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="work2">
+                <div class="text" lang="en">
+                    <h3>UX Development &amp; Design</h3>
+                    <div class="all_text">
+              
+                                        <h4>General Dynamics IT</h4>
+                                        <p>
+                                            While at GDIT, my team developed and maintained an application for Android and IOS devices for the US Department of Education that allowed students to apply for financial aid. The development process included developing several apps in parallel (one for every school year) using Angular and Ionic. Concern was paid to 508
+                                            accessibility and performance.
+                                        </p>
+                                        <p class="tech">
+                                            <strong>Tech on this job:</strong><br>
+                                            HTML5, CSS3, SASS, jQuery, JavaScript, Angular 7, TypeScript, JSON, REST APIs, git, Section 508/WAI compliance, Ionic 4, deque axe DevTools, Wave evaluator
+                                        </p>
+
+                                        <p>
+                                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+    
+                                            <a href="files/romanoff-resume.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+    
+                                            <a href="files/romanoff-resume.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                    
+                                        <p class="next_prev">
+                                            <a href="#work" class="menu" data-target="work">previous</a>&nbsp;|&nbsp;<a href="#work3" class="menu" data-target="work3">next</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/city.png" alt="Photo of Los Angeles" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="work3">
+                <div class="text" lang="en">
+                    <h3>UX Development &amp; Design</h3>
+                    <div class="all_text">
+              
+                                        <h4>CVSHealth</h4>
+                                        <p>
+                                            At CVS, I acted as tech lead, front-end developer, and user centered experience design and accessibility advisor on several CVS and CVS-affiliated web products including CVS.com, Omnicare.com and the CVS Style Guide. This work involved consulting during the UX design phase and front-end development.
+                                        </p>
+                                        <p class="tech">
+                                            <strong>Tech on this job:</strong><br>
+                                            HTML5, CSS3, SASS, jQuery, JavaScript, Angular 2/4, TypeScript, JSON, REST APIs, git, Sketch, Section 508/WAI compliance, deque axe DevTools, Wave evaluator
+                                        </p>
+
+                                        <p>
+                                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+    
+                                            <a href="files/romanoff-resume.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+    
+                                            <a href="files/romanoff-resume.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                    
+                                        <p class="next_prev">
+                                            <a href="#work2" class="menu" data-target="work2">previous</a>&nbsp;|&nbsp;<a href="#work4" class="menu" data-target="work4">next</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/city.png" alt="Photo of Los Angeles" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="work4">
+                <div class="text" lang="en">
+                    <h3>UX Development &amp; Design</h3>
+                    <div class="all_text">
+              
+                                        <h4>Brandeis University</h4>
+                                        <p>
+                                            I was responsible for evaluating software, web templates, and video delivery systems ensuring Section 508 compliance and universal access. I also provided training and consultation about issues related to universal and accessible design and content creation and sat on the review committee evaluating proposals for the redesign of
+                                            brandeis.edu.
+                                        </p>
+                                        <p class="tech">
+                                            <strong>Tech on this job:</strong><br>
+                                            Section 508/WAI compliance, HTML5, CSS3, jQuery, JAWS screen reader, deque axe DevTools, Wave evaluator, ZoomText magnifier
+                                        </p>
+
+                                        <p>
+                                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+    
+                                            <a href="files/romanoff-resume.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+    
+                                            <a href="files/romanoff-resume.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+                                    
+                                        <p class="next_prev">
+                                            <a href="#work3" class="menu" data-target="work3">previous</a>&nbsp;|&nbsp;<a href="#work5" class="menu" data-target="work5">next</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/city.png" alt="Photo of Los Angeles" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="work5">
+                <div class="text" lang="en">
+                    <h3>UX Development &amp; Design</h3>
+                    <div class="all_text">
+              
+                                        <h4>Houghton Mifflin Harcourt</h4>
+                                        <p>
+                                            I developed responsive, high performance front-end code for hmhco.com using HTML5, CSS3, jQuery, offered user experience design consulting, and mentored junior team members. My team at HMHCO redesigned and rebuilt
+                                            hmhco.com, the company's flagship site, and my role included UX/UI design consulting and front-end development.
+                                        </p>
+                                        <p class="tech">
+                                            <strong>Tech on this job:</strong><br>
+                                            HTML5, CSS3, jQuery, JavaScript, Photoshop, Foundation 3, Foundation 6, Sitecore, SVN
+                                        </p>
+
+                                        <p>
+                                            
+                                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                                <path
+                                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                                </path>
+                                            </svg></a>
+    
+                                            <a href="files/romanoff-resume.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                                    alt="Resume PDF Download"></a>
+    
+                                            <a href="files/romanoff-resume.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                                    alt="Resume Microsoft Word Download"></a>
+                                    </p>
+
+                                        <p class="next_prev">
+                                            <a href="#work4" class="menu" data-target="work4">previous</a>&nbsp;|&nbsp;<a href="#work6" class="menu" data-target="work6">next</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/city.png" alt="Photo of Los Angeles" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content" id="work6">
+                <div class="text" lang="en">
+                    <h3>UX Development &amp; Design</h3>
+                    <div class="all_text">
+
+                        <div class="portfolio_links">
+                            <p><a href="https://clients.ljonn.com/portfolio/careconnect/">CareConnect</a><br>
+                                UX design</p>
+
+                            <p><a href="https://clients.ljonn.com/portfolio/webgizzmo/">WebGizzmo</a><br>
+                                UI design, web dev</p>
+                        
+                            <p><a href="https://clients.ljonn.com/portfolio/jm_ai/">Jack Morton / Aspen Institute</a><br>
+                                UI design, web dev</p>
+                        
+                            <p><a href="https://clients.ljonn.com/portfolio/jm_converse/">Jack Morton / Converse</a><br>
+                                UI design, web dev</p>
+                        
+                            <p><a href="https://clients.ljonn.com/portfolio/jm_nba/">Jack Morton / NBA</a><br>
+                                UI design, web dev</p>
+                        
+                            <p><a href="https://clients.ljonn.com/portfolio/jm_chewy/">Jack Morton / Chewy</a><br>
+                                UI design, web dev</p>
+                        
+                            <p><a href="https://clients.ljonn.com/portfolio/oracle/">Oracle Cloud Service</a><br>
+                                UX/UI design</p>
+                        
+                            <p><a href="https://clients.ljonn.com/portfolio/jcw/">John Cooper Works MINIUSA.com</a><br>
+                                UI design, web dev</p>
+                        </div>
+
+                        <p>
+                            
+                            <a href="https://www.linkedin.com/in/lanceromanoff/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false" role="presentation">
+                                <path
+                                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                                </path>
+                            </svg></a>
+
+                            <a href="files/romanoff-resume.pdf" download title="PDF Resume"><img src="img/pdf.png"
+                                    alt="Resume PDF Download"></a>
+
+                            <a href="files/romanoff-resume.docx" download title="Microsoft Word Resume"><img src="img/word.png"
+                                    alt="Resume Microsoft Word Download"></a>
+                    </p>
+
+                                        <p class="next_prev">
+                                            <a href="#work5" class="menu" data-target="work5">previous</a>
+                                        </p>
+                        
+                    </div>
+
+                    <p>
+                        <img src="img/city.png" alt="Photo of Los Angeles" loading="lazy" class="circle">
+                    </p>
+                </div>
+            </section>
+
+            <section class="content fiction" id="fiction">
+                <div class="text" lang="en">
+                        <h3>Fiction</h3>
+                        <div class="all_text">
+
+                            <h4>Isn't It Good?</h4>
+
+                        <p>
+                            Mora was jostled awake by a bad dream he suddenly couldn't remember. He rose, careful not to disturb his guest. Having to measure his steps and tread quietly in the night was new for him. Creeping precariously into his bathroom, Mora stared for a long time into the mirror, searching for something familiar.
+                        </p>
+                        <p>
+                            This story is about the unlikely interaction between two lonely people in a book club.
+                        </p>
+                            <ul>
+                                <li>Riddle Fence, Issue 36, Summer 2020</li>
+                                <li>The Charleston Anvil, Issue 13, Winter 2021</li>
+                            </ul>
+
+                            <p class="next_prev">
+                               <a href="fiction2" class="menu" data-target="fiction2">next</a>
+                            </p>
+                        </div>
+                        <p>
+                            <img src="img/books.png" alt="Photo of World War Two USO poster reading 'Our Men Need Books'" loading="lazy" class="circle">
+                        </p>
+                </div>
+            </section>
+
+            <section class="content fiction" id="fiction2">
+                <div class="text" lang="en">
+                        <h3>Fiction</h3>
+                        <div class="all_text">
+
+                            <h4>Sea of Tranquility</h4>
+
+                        <p>
+                            Finn sucked in a long breath and opened his door. He took a leaden first step, and then a second and a third. A quarter mile down the road, he hunted in his jacket for his cigarettes. He discovered them, a gently crushed pack of Merits, in his inside pocket paired with a book of matches. The matchbook was glossy black with the logo of the Dunes casino embossed across the cover.<br><br> 
+                            &quot;Miracle in the desert,&quot; Finn thought to himself and lit a Merit. 
+
+                        </p>
+                        <p>
+                            A man and his wife are stranded in the desert and uncomfortable truths surface.
+                        </p>
+                            <ul>
+                                <li>Door = Jar, Issue 24, Fall 2022</li>
+                                <li>Ginosko Literary Journal, Issue 32, 2024</li>
+                                <li>The Opiate, Volume 39, Fall 2024</li>
+                                <li>Bronze Bird Review, #1, Fall 2024</li>
+                            </ul>
+
+                            <p class="next_prev">
+                                <a href="#fiction" class="menu" data-target="fiction">previous</a>
+                            </p>
+                        </div>
+                        <p>
+                            <img src="img/books.png" alt="Photo of World War Two USO poster reading 'Our Men Need Books'" loading="lazy" class="circle">
+                        </p>
+                </div>
+            </section>
+
+                                        
+                            <section class="content" id="bio">
+                                <div class="text" lang="en">
+                                        <h3>Bio</h3>
+                                        <div class="all_text">
+
+                                        <p>
+                                        My principal professional interests are UX writing, content design, HTML5, CSS3/SCSS, web accessibility, optimizing web site performance, Svelte, HTMX, Lit, and component based design systems.
+                                        </p>
+                                        <p>
+                                        Current and previous clients and employers span a wide variety of fields and include:
+                                        </p>
+                                        <ul>
+                                            <li>Bank of America</li>
+                                            <li>Boston University</li>
+                                            <li>Brandeis University</li>
+                                            <li>Blue Cross</li>
+                                            <li>CVS</li>
+                                            <li>ESPN</li>
+                                            <li>Fidelity Investments</li>
+                                            <li>General Dynamics</li>
+                                            <li>Hasbro</li>
+                                            <li>Houghton Mifflin Harcourt</li>
+                                            <li>Intuit</li>
+                                            <li>Liberty Mutual</li>
+                                            <li>U.S. Department of Education</li>
+                                            <li>Safeway</li>
+                                            <li>and many others</li>
+                                        </ul>
+                                        <p>
+                                        When I'm not working I'm writing a novel set in 1970s Russia.    
+                                        </p>
+                                        </div>
+                                        <p>
+                                            <img src="img/color-vespa.png" alt="Photo of Lance Romanoff" loading="lazy" class="circle">
+                                        </p>
+                                </div>
+                            </section>
+
+                            <section class="content" id="contact">
+                                <div class="text" lang="en">
+                                    <h3>Contact</h3>
+                                    <div class="all_text">
+                                  
+                                    <p>
+                                        Email: <span class="em-address" data-user="ecnal" data-website="moc.ffonamorecnal" role="status"></span>
+                                    </p>
+
+                                </div>
+
+                                <p>
+                                        <img src="img/cat2.png" alt="Photo of Spot" loading="lazy" class="circle">
+                                </p>
+                                   
+
+                                </div>
+                            </section>
+
+                         </main>
+                         
+        </div>
+    </body>
+
+
+    
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll("#imageContainer img"); 
+            const spans = document.querySelectorAll("#spanContainer span");
+            let currentImageIndex = 0;
+            let currentSpanIndex = 0;
+    
+            function showNextImage() {
+                images[currentImageIndex].classList.remove("active");
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                images[currentImageIndex].classList.add("active");
+            }
+    
+            function showNextSpan() {
+                spans[currentSpanIndex].classList.remove("active");
+                currentSpanIndex = (currentSpanIndex + 1) % spans.length;
+                spans[currentSpanIndex].classList.add("active");
+            }
+    
+            setInterval(showNextImage, 4000);
+            setInterval(showNextSpan, 5500);
+        });
+    
+        const targets = ['images', 'writing', 'writing2', 'writing3', 'writing4', 'writing5', 'writing6', 'work', 'work2', 'work3', 'work4', 'work5', 'work6', 'fiction', 'fiction2', 'bio', 'contact'];
+    
+        document.querySelectorAll('.menu').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.preventDefault();
+    
+                const targetID = btn.getAttribute('data-target');
+                
+                window.scrollTo(0, 0);
+                
+                targets.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (id === targetID) {
+                        element.classList.add('fade-in');
+                        element.classList.remove('fade-out');
+                    } else {
+                        element.classList.add('fade-out');
+                        element.classList.remove('fade-in');
+                    }
+                });
+            });
+        });
+    </script>
+</html>
